@@ -1,0 +1,67 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col p-2">
+      <h1>
+        Quotes
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card text-dark bg-light">
+        <div class="card-header">
+          Add a quote that you like:
+        </div>
+        <img src="https://images.pexels.com/photos/4648987/pexels-photo-4648987.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="100%" height="100%" class="card-img-top" alt="aloha">
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <button
+          [disabled]="!quote"
+          class="btn btn-dark"
+          type="button"
+          id="button-addon1"
+          (click)="addQuote()"
+        >
+          Add
+        </button>
+            <input
+          type="text"
+          class="form-control"
+          placeholder=""
+          aria-describedby="button-addon1"
+          [value]="quote"
+          [(ngModel)]="quote"
+        />
+
+          </div>
+        </div>
+        <div *ngIf="result1" class="card-footer bg-light">
+          <p class="card-text">{{result1}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card text-dark bg-light">
+        <div class="card-header">
+          Let the universe choose a quote for you:
+        </div>
+        <img src="https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" width="100%" height="100%" class="card-img-top" alt="aloha">
+        <div class="card-body">
+          <button
+          class="btn btn-dark mb-3"
+          type="button"
+          id="button-addon1"
+          (click)="getRandomQuote()"
+        >
+          Random
+        </button>
+        </div>
+        <div *ngIf="result2" class="card-footer bg-light">
+          <p class="card-text">{{result2.quote}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

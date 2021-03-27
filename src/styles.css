@@ -1,0 +1,20 @@
+/* Add application styles & imports to this file! */
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  font-family: sans-serif;
+}
+ul li {
+  list-style: none;
+  text-align: left;
+}
+
+h1 {
+  text-align: center;
+}
+img {
+  object-fit: cover;
+  height: 100px;
+  width: 50px;
+}
