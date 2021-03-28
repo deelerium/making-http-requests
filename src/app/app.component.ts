@@ -12,6 +12,7 @@ export class AppComponent {
   result2: any;
   formChange: FormGroup;
   isLoading: boolean = false;
+  isLoading2: boolean = false;
   constructor(
     private appComponentService: AppComponentService,
     private formBuilder: FormBuilder
@@ -43,16 +44,16 @@ export class AppComponent {
     );
   }
   getRandomQuote() {
-    this.isLoading = true;
+    this.isLoading2 = true;
     this.appComponentService.getQuotes().subscribe(
       res => {
         console.log(res);
         this.result2 = res[Math.floor(Math.random() * res.length)];
-        this.isLoading = false;
+        this.isLoading2 = false;
       },
       err => {
         console.log(err);
-        this.isLoading = false;
+        this.isLoading2 = false;
       }
     );
   }

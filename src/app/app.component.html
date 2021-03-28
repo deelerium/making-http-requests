@@ -46,7 +46,7 @@
           </form>
         </div>
         <div *ngIf="result1" class="card-footer bg-light">
-          <p class="card-text">{{result1}}</p>
+          <p class="card-text">"{{result1}}"</p>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@
         />
         <div class="card-body">
           <button
-            *ngIf="!isLoading"
+            *ngIf="!isLoading2"
             class="btn btn-dark mb-3"
             type="button"
             id="button-addon1"
@@ -72,13 +72,13 @@
           >
             Random
           </button>
-          <div *ngIf="isLoading" class="text-center">
+          <div *ngIf="isLoading2" class="text-center">
             <div class="spinner-border" role="status"></div>
           </div>
         </div>
 
         <div *ngIf="result2" class="card-footer bg-light">
-          <p class="card-text">{{result2.quote}}</p>
+          <p class="card-text">"{{result2.quote}}"</p>
         </div>
       </div>
     </div>
