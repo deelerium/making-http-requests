@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AppComponentService } from "./app.component.service";
 
 @Component({
@@ -7,15 +8,24 @@ import { AppComponentService } from "./app.component.service";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  quote: any;
   result1: any;
   result2: any;
-
-  constructor(private appComponentService: AppComponentService) {}
+  formChange: FormGroup;
+  isLoading: boolean = false;
+  constructor(
+    private appComponentService: AppComponentService,
+    private formBuilder: FormBuilder
+  ) {
+    this.formChange = this.formBuilder.group({
+      quote: ["", Validators.required]
+    });
+  }
   ngOnInit() {}
   addQuote() {
-    this.result1 = this.quote;
-    this.quote = "";
+    this.isLoading = true;
+    if (this.formChange.value.quote) {
+      this.result1 = this.formChange.value.quote;
+    }
     const data: any = {
       quote: this.result1
     };
@@ -23,20 +33,26 @@ export class AppComponent {
     this.appComponentService.addQuoteToServ(data).subscribe(
       res => {
         console.log(res);
+        this.formChange.reset();
+        this.isLoading = false;
       },
       err => {
         console.log(err);
+        this.isLoading = false;
       }
     );
   }
   getRandomQuote() {
+    this.isLoading = true;
     this.appComponentService.getQuotes().subscribe(
       res => {
         console.log(res);
         this.result2 = res[Math.floor(Math.random() * res.length)];
+        this.isLoading = false;
       },
       err => {
         console.log(err);
+        this.isLoading = false;
       }
     );
   }
